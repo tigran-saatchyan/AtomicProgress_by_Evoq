@@ -119,7 +119,7 @@ IS_DB_AVAIL = all(
 if IS_DB_AVAIL:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql",
+            "ENGINE": os.getenv("DB_ENGINE"),
             "NAME": DB_DATABASE,
             "USER": DB_USERNAME,
             "PASSWORD": DB_PASSWORD,
