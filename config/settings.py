@@ -50,9 +50,12 @@ THIRD_PARTY_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_celery_beat',
+    'django_filters',
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'users.apps.UsersConfig',
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
