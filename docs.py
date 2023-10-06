@@ -9,7 +9,8 @@ schema_view = get_schema_view(
         default_version='v1',
         description="API for Atomic Progress Tracker",
         terms_of_service="https://github.com/tigran-saatchyan"
-                         "/AtomicProgress_by_EvoQ/blob/master/TERMS_OF_SERVICE",
+                         "/AtomicProgress_by_EvoQ/blob/"
+                         "master/TERMS_OF_SERVICE",
         contact=openapi.Contact(
             email="mr.saatchyan@yandex.com",
             name="Tigran Saatchyan",
@@ -17,8 +18,8 @@ schema_view = get_schema_view(
         ),
         license=openapi.License(
             name="MIT License",
-            url="https://github.com/tigran-saatchyan/AtomicProgress_by_EvoQ/blob"
-                "/master/LICENSE"
+            url="https://github.com/tigran-saatchyan/"
+                "AtomicProgress_by_EvoQ/blob/master/LICENSE"
         ),
     ),
     public=True,

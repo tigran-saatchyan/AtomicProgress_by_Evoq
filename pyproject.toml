@@ -18,9 +18,16 @@ django-cors-headers = "^4.2.0"
 celery = "^5.3.4"
 django-celery-beat = "^2.5.0"
 redis = "^5.0.1"
+django-filter = "^23.3"
+maskpass = "^0.3.7"
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.0"
+
+
+[tool.poetry.group.develop.dependencies]
+flake8 = "^6.1.0"
+flake8-django = "^1.4"
 
 [build-system]
 requires = ["poetry-core"]
