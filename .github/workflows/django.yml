@@ -10,18 +10,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
     timeout-minutes: 10
     strategy:
       max-parallel: 4
@@ -39,12 +27,18 @@ jobs:
     - name: Start PostgreSQL
       run: |
           sudo systemctl start postgresql.service
-          sudo -u postgres createuser -s runner
+          sudo apt update
+          sudo apt install -y postgresql postgresql-contrib
+          sudo apt install -y python3-dev libpq-dev
+          pip install psycopg
+          sudo -u postgres psql -f setup.sql
+
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        python manage.py migrate
 
     - name: Run Tests
       env:
