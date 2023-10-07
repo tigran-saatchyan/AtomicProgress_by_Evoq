@@ -8,7 +8,8 @@ from users.models import User
 
 class Command(BaseCommand):
     """
-    Custom management command for creating a superuser with admin privileges.
+    Custom management command for creating a superuser with admin
+    privileges.
     """
     help = 'Create a superuser with admin privileges.'
 
@@ -17,11 +18,11 @@ class Command(BaseCommand):
         Handle the command execution.
 
         This function guides the user through the process of creating a
-        superuser with admin privileges. It prompts for an email address,
-        first name, last name, and password. The email address is validated
-        using the `validate_email_address` function. If the email address is
-        valid and passwords match, a superuser is created with the
-        provided information.
+        superuser with admin privileges. It prompts for an email
+        address, first name, last name, and password. The email address
+        is validated using the `validate_email_address` function. If
+        the email address is valid and passwords match, a superuser
+        is created with the provided information.
 
         Args:
             *args: Additional command arguments (not used).

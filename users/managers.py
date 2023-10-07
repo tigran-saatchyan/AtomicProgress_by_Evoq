@@ -16,8 +16,8 @@ class CustomUserManager(BaseUserManager):
             Create and save a superuser.
 
     Usage:
-        - Use this custom user manager for the custom user model to handle
-        user creation.
+        - Use this custom user manager for the custom user
+        model to handle user creation.
 
     Example:
         ```python
