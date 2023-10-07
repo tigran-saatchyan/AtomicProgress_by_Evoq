@@ -1,4 +1,4 @@
-from unittest import TestCase
+from django.test import TestCase
 
 from places.models import Place
 from users.models import User
