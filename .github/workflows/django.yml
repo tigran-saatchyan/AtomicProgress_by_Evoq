@@ -1,5 +1,25 @@
 name: Django CI
 
+env:
+  DB_ENGINE: ${{ secrets.DB_ENGINE}}
+  DB_USERNAME: postgres
+  DB_PASSWORD: postgres
+  DB_HOST: postgres
+  DB_PORT: ${{ secrets.DB_PORT}}
+  DB_DATABASE: ${{ secrets.DB_DATABASE}}
+  DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE}}
+  DEBUG: False
+  DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY}}
+  CORS_ALLOWED_HOST: ${{ secrets.CORS_ALLOWED_HOST}}
+  CORS_ALLOW_ALL_ORIGINS: ${{ secrets.CORS_ALLOW_ALL_ORIGINS}}
+  CSRF_TRUSTED_FRONTEND: ${{ secrets.CSRF_TRUSTED_FRONTEND}}
+  CSRF_TRUSTED_BACKEND: ${{ secrets.CSRF_TRUSTED_BACKEND}}
+  DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL}}
+  EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER}}
+  EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD}}
+  EMAIL_HOST: ${{ secrets.EMAIL_HOST}}
+  EMAIL_PORT: ${{ secrets.EMAIL_PORT}}
+
 on:
   push:
     branches: [ "develop" ]
@@ -48,24 +68,5 @@ jobs:
         python manage.py migrate
 
     - name: Run Tests
-      env:
-        DB_ENGINE: ${{ secrets.DB_ENGINE}}
-        DB_USERNAME: postgres
-        DB_PASSWORD: postgres
-        DB_HOST: postgres
-        DB_PORT: ${{ secrets.DB_PORT}}
-        DB_DATABASE: ${{ secrets.DB_DATABASE}}
-        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE}}
-        DEBUG: False
-        DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY}}
-        CORS_ALLOWED_HOST: ${{ secrets.CORS_ALLOWED_HOST}}
-        CORS_ALLOW_ALL_ORIGINS: ${{ secrets.CORS_ALLOW_ALL_ORIGINS}}
-        CSRF_TRUSTED_FRONTEND: ${{ secrets.CSRF_TRUSTED_FRONTEND}}
-        CSRF_TRUSTED_BACKEND: ${{ secrets.CSRF_TRUSTED_BACKEND}}
-        DEFAULT_FROM_EMAIL: ${{ secrets.DEFAULT_FROM_EMAIL}}
-        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER}}
-        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD}}
-        EMAIL_HOST: ${{ secrets.EMAIL_HOST}}
-        EMAIL_PORT: ${{ secrets.EMAIL_PORT}}
       run: |
         python manage.py test
