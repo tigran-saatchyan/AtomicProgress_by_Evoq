@@ -40,6 +40,11 @@ class User(AbstractUser):
         verbose_name='is verified',
         default=False
     )
+    is_active = models.BooleanField(
+        default=False,
+        help_text="Designates whether this user should be treated as active. "
+                  "Unselect this instead of deleting accounts.",
+    )
     date_modified: datetime = models.DateTimeField(
         verbose_name='date modified',
         auto_now=True
