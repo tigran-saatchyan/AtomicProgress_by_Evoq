@@ -29,6 +29,7 @@ python-dotenv = "^1.0.0"
 flake8 = "^6.1.0"
 flake8-django = "^1.4"
 pre-commit = "^3.4.0"
+coverage = "^7.3.2"
 
 [build-system]
 requires = ["poetry-core"]
