@@ -10,16 +10,16 @@ schema_view = get_schema_view(
         description="API for Atomic Progress Tracker",
         terms_of_service="https://github.com/tigran-saatchyan"
                          "/AtomicProgress_by_EvoQ/blob/"
-                         "master/TERMS_OF_SERVICE",
+                         "develop/TERMS_OF_SERVICE",
         contact=openapi.Contact(
-            email="mr.saatchyan@yandex.com",
+            email="mr.saatchyan@gmail.com",
             name="Tigran Saatchyan",
             url="https://github.com/tigran-saatchyan"
         ),
         license=openapi.License(
             name="MIT License",
             url="https://github.com/tigran-saatchyan/"
-                "AtomicProgress_by_EvoQ/blob/master/LICENSE"
+                "AtomicProgress_by_EvoQ/blob/develop/LICENSE"
         ),
     ),
     public=True,
@@ -28,15 +28,18 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path(
-        'swagger<format>/', schema_view.without_ui(cache_timeout=0),
+        'swagger<format>/',
+        schema_view.without_ui(cache_timeout=0),
         name='schema-json'
     ),
     path(
-        'swagger/', schema_view.with_ui('swagger', cache_timeout=0),
+        'swagger/',
+        schema_view.with_ui('swagger', cache_timeout=0),
         name='schema-swagger-ui'
     ),
     path(
-        'redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+        'redoc/',
+        schema_view.with_ui('redoc', cache_timeout=0),
         name='schema-redoc'
     ),
 ]

@@ -8,7 +8,7 @@ from locations.models import Location
 
 
 class Habit(models.Model):
-    user = models.ForeignKey(
+    owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='habit',
         on_delete=models.CASCADE
@@ -18,16 +18,15 @@ class Habit(models.Model):
         related_name='habit',
         on_delete=models.CASCADE
     )
-    time_to_behave = models.TimeField(**NULLABLE)
+    time_to_behave = models.TimeField()
     behavior = models.CharField(max_length=255)
     is_satisfying = models.BooleanField(default=False)
     is_good = models.BooleanField(default=False)
     connected_habit = models.ForeignKey(
-        'self',
+        'Habit',
         **NULLABLE,
         on_delete=models.SET_NULL,
-        related_name='habit',
-        limit_choices_to={'is_satisfying': True, 'user': user}
+        limit_choices_to={'is_satisfying': True}
     )
     period_days = models.IntegerField(
         default=1,
@@ -42,9 +41,9 @@ class Habit(models.Model):
             )
         ]
     )
-    reward = models.CharField(max_length=255)
+    reward = models.CharField(max_length=255, **NULLABLE)
     time_to_complete = models.IntegerField(
-        default=120,
+        default=60,
         validators=[
             MinValueValidator(
                 1,
@@ -57,6 +56,11 @@ class Habit(models.Model):
         ]
     )
     is_public = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-id']
 
     def clean(self):
         if self.is_satisfying and (self.reward or self.connected_habit):
@@ -70,11 +74,13 @@ class Habit(models.Model):
                 "вознаграждение."
             )
 
+    def save(self, *args, **kwargs):
+
+        self.full_clean()
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return (
             f'I will {self.behavior} at {self.time_to_behave} '
             f'in {self.location}'
         )
-
-    class Meta:
-        unique_together = [['user', 'connected_habit']]
