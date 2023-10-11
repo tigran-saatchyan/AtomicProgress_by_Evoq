@@ -13,12 +13,12 @@ from users.service import generate_token
 from .tasks import send_notification
 
 
-class UserListView(generics.ListAPIView):
+class UsersListView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
 
-class UserRegistrationView(generics.CreateAPIView):
+class UsersRegistrationView(generics.CreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = UserRegistrationSerializer
     queryset = User.objects.all()

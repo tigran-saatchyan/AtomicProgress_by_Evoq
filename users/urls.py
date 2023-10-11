@@ -6,15 +6,16 @@ from rest_framework_simplejwt.views import (
 
 from users.apps import UsersConfig
 from users.views import (
-    UserListView, UserRegistrationView,
-    UsersRetrieveView, UsersUpdateView, UsersVerifyEmailView, UsersDestroyView,
+    UsersListView, UsersRegistrationView,
+    UsersRetrieveView, UsersUpdateView, UsersVerifyEmailView,
+    UsersDestroyView,
 )
 
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path('', UserListView.as_view(), name='users-list'),
-    path('create/', UserRegistrationView.as_view(), name='users-create'),
+    path('', UsersListView.as_view(), name='users-list'),
+    path('create/', UsersRegistrationView.as_view(), name='users-create'),
     path('<int:pk>/', UsersRetrieveView.as_view(), name='user-retrieve'),
     path('update/<int:pk>', UsersUpdateView.as_view(), name='users-update'),
     path('delete/<int:pk>', UsersDestroyView.as_view(), name='users-destroy'),
