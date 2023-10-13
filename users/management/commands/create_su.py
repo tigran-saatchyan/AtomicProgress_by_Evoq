@@ -33,7 +33,7 @@ class Command(BaseCommand):
 
         Example:
             To create a superuser with admin privileges, run:
-            $ python manage.py create_superuser
+            $ python manage.py create_su
         """
         while True:
             email = input('Enter admin e-mail (required): ')
