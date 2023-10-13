@@ -26,6 +26,7 @@ class User(AbstractUser):
         verbose_name='avatar',
         **NULLABLE
     )
+    telegram_user_id = models.IntegerField(**NULLABLE)
     country = models.CharField(
         max_length=50,
         verbose_name='country',

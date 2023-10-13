@@ -20,6 +20,8 @@ django-celery-beat = "^2.5.0"
 redis = "^5.0.1"
 django-filter = "^23.3"
 maskpass = "^0.3.7"
+requests = "^2.31.0"
+pytelegrambotapi = "^4.14.0"
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.0"

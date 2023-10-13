@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'first_name',
             'last_name',
+            'telegram_user_id',
             'telephone',
             'image',
             'country',
@@ -22,13 +23,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    pk = serializers.IntegerField(read_only=True)
     password = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
-    is_verified = serializers.BooleanField(read_only=True)
-    is_active = serializers.BooleanField(read_only=True)
-    date_added = serializers.DateTimeField(read_only=True)
-    date_modified = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = User
@@ -45,7 +41,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             'city',
             'is_verified',
             'is_active',
-            'date_added',
+            'date_joined',
             'date_modified',
         )
         read_only_fields = [
