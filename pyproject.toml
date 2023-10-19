@@ -23,11 +23,8 @@ maskpass = "^0.3.7"
 requests = "^2.31.0"
 pytelegrambotapi = "^4.14.0"
 
-[tool.poetry.group.dev.dependencies]
-python-dotenv = "^1.0.0"
-
-
 [tool.poetry.group.develop.dependencies]
+python-dotenv = "^1.0.0"
 flake8 = "^6.1.0"
 flake8-django = "^1.4"
 pre-commit = "^3.4.0"
