@@ -16,7 +16,7 @@ DEBUG = os.getenv(
     "DEBUG", 'False'
 ).lower() in ('true', '1', 'True')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
@@ -170,6 +170,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'static',
 )
+
+STATIC_ROOT = BASE_DIR / 'static_root'
 
 # Media files uploaded by users / customers
 

@@ -11,7 +11,7 @@
 
 
 <p align="center">
-  <img src="static/readme/img.png" alt="screenshot">
+  <img src="https://i.postimg.cc/TP482RW1/img.png" alt="screenshot">
 </p>
 
 [![Flake8](https://github.com/tigran-saatchyan/AtomicProgress_by_Evoq/actions/workflows/flake8.yml/badge.svg?branch=develop)](https://github.com/tigran-saatchyan/AtomicProgress_by_Evoq/actions/workflows/flake8.yml)
@@ -83,16 +83,33 @@ You will need the following installed on your computer.
 
 Open your terminal and type in
 
-```sh
-$ git clone https://github.com/tigran-saatchyan/AtomicProgress_by_Evoq.git
-$ cd AtomicProgress_by_Evoq
-```
+[//]: # (TODO: update after composer is implemented)
+[//]: # ()
+[//]: # (```sh)
+
+[//]: # ($ git clone https://github.com/tigran-saatchyan/AtomicProgress_by_Evoq.git)
+
+[//]: # ($ cd AtomicProgress_by_Evoq)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Install all the packages)
+
+[//]: # ()
+[//]: # (```sh)
+
+[//]: # ($ poetry shell)
+
+[//]: # ($ poetry install)
+
+[//]: # (```)
 
 Install all the packages
 
 ```sh
-$ poetry shell
-$ poetry install
+$ docker build -t atomic_progress .
+$ docker run --env-file=.env atomic_progress:latest
 ```
 
 ### Setting up

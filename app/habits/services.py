@@ -6,14 +6,10 @@ from habits.models import Habit
 
 
 def schedule_notification(habit: Habit, telegram_user_id):
-    # schedule, _ = CrontabSchedule.objects.get_or_create(
-    #     minute=habit.time_to_behave.minute,
-    #     hour=habit.time_to_behave.hour,
-    #     day_of_month=f'*/{habit.period_days}'
-    # )
-
     schedule, _ = CrontabSchedule.objects.get_or_create(
-        minute='*/2',
+        minute=habit.time_to_behave.minute,
+        hour=habit.time_to_behave.hour,
+        day_of_month=f'*/{habit.period_days}'
     )
 
     task = PeriodicTask.objects.filter(
