@@ -9,7 +9,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-qg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv(
@@ -18,20 +18,22 @@ DEBUG = os.getenv(
 
 ALLOWED_HOSTS = ['*']
 
+ALL_HOSTS = "http://*"
+
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    os.getenv('CORS_ALLOWED_HOST')
+    os.getenv('CORS_ALLOWED_HOST', ALL_HOSTS)
 ]
-
-# CSRF protection settings
-CSRF_TRUSTED_ORIGINS = [
-    os.getenv('CSRF_TRUSTED_FRONTEND'),
-    os.getenv('CSRF_TRUSTED_BACKEND')
-]
-
 CORS_ALLOW_ALL_ORIGINS = os.getenv(
     "CORS_ALLOW_ALL_ORIGINS", 'False'
 ).lower() in ('true', '1', 'True')
+
+# CSRF protection settings
+CSRF_TRUSTED_ORIGINS = [
+    os.getenv('CSRF_TRUSTED_FRONTEND', ALL_HOSTS),
+    os.getenv('CSRF_TRUSTED_BACKEND', ALL_HOSTS)
+]
+
 
 # Application definition
 
@@ -102,11 +104,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DB_USERNAME = os.environ.get("DB_USERNAME")
-DB_PASSWORD = os.environ.get("DB_PASSWORD")
-DB_HOST = os.environ.get("DB_HOST")
-DB_PORT = os.environ.get("DB_PORT")
-DB_DATABASE = os.environ.get("DB_DATABASE")
+DB_USERNAME = os.environ.get("DB_USERNAME", "postgres")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "postgres")
+DB_HOST = os.environ.get("DB_HOST", "localhost")
+DB_PORT = os.environ.get("DB_PORT", 5432)
+DB_DATABASE = os.environ.get("DB_DATABASE", "atomicprogress")
 
 IS_DB_AVAIL = all(
     [
@@ -121,7 +123,7 @@ IS_DB_AVAIL = all(
 if IS_DB_AVAIL:
     DATABASES = {
         "default": {
-            "ENGINE": os.getenv("DB_ENGINE"),
+            "ENGINE": "django.db.backends.postgresql",
             "NAME": DB_DATABASE,
             "USER": DB_USERNAME,
             "PASSWORD": DB_PASSWORD,
@@ -166,12 +168,8 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
-
-STATIC_ROOT = BASE_DIR / 'static_root'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Media files uploaded by users / customers
 
@@ -263,8 +261,14 @@ SWAGGER_SETTINGS = {
 }
 
 # Celery configuration
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+CELERY_BROKER_URL = os.getenv(
+    "CELERY_BROKER_URL",
+    "redis://127.0.0.1:6379/0"
+)
+CELERY_RESULT_BACKEND = os.getenv(
+    "CELERY_RESULT_BACKEND",
+    "redis://127.0.0.1:6379/0"
+)
 
 CELERY_IMPORTS = ('users.tasks', 'habits.tasks')
 
