@@ -35,6 +35,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             'password2',
             'first_name',
             'last_name',
+            'telegram_user_id',
             'telephone',
             'image',
             'country',
@@ -48,7 +49,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             'pk',
             'is_verified',
             'is_active',
-            'date_added',
+            'date_joined',
             'date_modified',
         ]
         write_only_fields = [

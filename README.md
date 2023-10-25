@@ -81,7 +81,9 @@ You will need the following installed on your computer.
 
 ### Installation
 
-Open your terminal and type in
+Rename '.env.template' to '.env' and fill in the required fields.
+
+Open your terminal and type in.
 
 [//]: # (TODO: update after composer is implemented)
 [//]: # ()
@@ -108,16 +110,18 @@ Open your terminal and type in
 Install all the packages
 
 ```sh
-$ docker build -t atomic_progress .
-$ docker run --env-file=.env atomic_progress:latest
+$ docker compose up --build
 ```
 
 ### Setting up
 
-Run all migrations
-```sh
-$ python manage.py migrate
-```
+[//]: # (Run all migrations)
+
+[//]: # (```sh)
+
+[//]: # ($ python manage.py migrate)
+
+[//]: # (```)
 
 
 ### Structure / Scaffolding

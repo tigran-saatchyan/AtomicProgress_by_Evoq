@@ -22,6 +22,7 @@ django-filter = "^23.3"
 maskpass = "^0.3.7"
 requests = "^2.31.0"
 pytelegrambotapi = "^4.14.0"
+gunicorn = "^21.2.0"
 
 [tool.poetry.group.develop.dependencies]
 python-dotenv = "^1.0.0"
