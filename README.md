@@ -125,26 +125,24 @@ $ docker compose up --build
 
 
 ### Structure / Scaffolding
+```text
+    Tigran Saatchyan ~ git version 2.34.1
+-------------------------------------
+Project: AtomicProgress_by_EvoQ
+Languages:  ● Python (93.7 %)    ● Dockerfile (3.4 %)
+            ● HTML (2.5 %)       ● Shell (0.4 %)
+Authors: 100% Tigran Saatchyan
+URL: git@github.com:tigran-saatchyan/AtomicProgress_by_EvoQ.git
+Commits: 53
 
+Lines of code: 1615
+Size: 186.02 KiB (78 files)
+License: MIT
+```
 <details>
-
 <summary>Project Structure</summary>
 
 ```text
-        Tigran Saatchyan ~ git version 2.34.1
-    -------------------------------------
-    Project: AtomicProgress_by_EvoQ
-    Languages:
-               ● Python (97.6 %) ● HTML (2.4 %)
-
-    Authors: 100% Tigran Saatchyan
-    URL: git@github.com:tigran-saatchyan/AtomicProgress_by_EvoQ.git
-    Commits: 45
-
-    Lines of code: 1690
-    Size: 164.57 KiB (69 files)
-    License: MIT
-
 AtomicProgress_by_EvoQ
 ├── common
 │  ├── __init__.py
@@ -179,7 +177,6 @@ AtomicProgress_by_EvoQ
 │  ├── tests.py
 │  ├── urls.py
 │  └── views.py
-├── LICENSE
 ├── locations
 │  ├── __init__.py
 │  ├── admin.py
@@ -194,18 +191,7 @@ AtomicProgress_by_EvoQ
 │  └── views.py
 ├── manage.py
 ├── media
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-├── requirements.txt
 ├── static
-│  └── readme
-│     └── img.png
-├── telegram_bot
-│  ├── __init__.py
-│  ├── bot.py
-│  └── user_registration.py
-├── TERMS_OF_SERVICE.md
 └── users
    ├── __init__.py
    ├── admin.py
@@ -232,7 +218,6 @@ AtomicProgress_by_EvoQ
    ├── tests.py
    ├── urls.py
    └── views.py
-
 ```
 
 </details>
