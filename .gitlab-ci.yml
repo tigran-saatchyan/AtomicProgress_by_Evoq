@@ -1,0 +1,9 @@
+stages:
+  - deploy staging
+
+Deploy to stage:
+  stage: deploy staging
+  script:
+    - cp $ENV_STAGE .env
+  tags:
+    - dev
